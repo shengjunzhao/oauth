@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: oauth2-client
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: c7bc728955e7a5c0f431
+            client-secret: 244cfc182ef1369f048d00ea15f4e99273388d69
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    shutdown:
+      enabled: true
