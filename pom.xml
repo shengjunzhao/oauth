@@ -19,6 +19,7 @@
         <spring-cloud.version>2021.0.4</spring-cloud.version>
         <spring-boot.version>2.7.5</spring-boot.version>
         <spring-cloud-security.version>2.2.5.RELEASE</spring-cloud-security.version>
+        <mybatis-spring.version>2.2.2</mybatis-spring.version>
     </properties>
     <dependencyManagement>
         <dependencies>
