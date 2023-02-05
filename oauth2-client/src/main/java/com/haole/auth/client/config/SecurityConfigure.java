@@ -25,33 +25,42 @@ import org.springframework.security.web.authentication.www.DigestAuthenticationF
 @EnableWebSecurity
 public class SecurityConfigure {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+//    @Autowired
+//    UserDetailsService userDetailsService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests().anyRequest().authenticated();
+        http.formLogin();
         http.httpBasic(Customizer.withDefaults());
+        http.oauth2Login();
         return http.build();
     }
 
-//    DigestAuthenticationEntryPoint authenticationEntryPoint() {
-//        DigestAuthenticationEntryPoint result = new DigestAuthenticationEntryPoint();
-//        result.setRealmName("My App Realm");
-//        result.setKey("3028472b-da34-4501-bfd8-a355c42bdf92");
-//    }
-//
-//    DigestAuthenticationFilter digestAuthenticationFilter() {
-//        DigestAuthenticationFilter result = new DigestAuthenticationFilter();
-//        result.setUserDetailsService(userDetailsService);
-//        result.setAuthenticationEntryPoint(authenticationEntryPoint());
-//    }
-//
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.authorizeRequests().anyRequest().authenticated();
-//        http.exceptionHandling(e -> e.authenticationEntryPoint(authenticationEntryPoint()))
-//                .addFilterBefore(digestAuthenticationFilter());
-//        return http.build();
-//    }
+    /**
+     * 摘要授权
+     */
+    /**
+     *
+
+    DigestAuthenticationEntryPoint authenticationEntryPoint() {
+        DigestAuthenticationEntryPoint result = new DigestAuthenticationEntryPoint();
+        result.setRealmName("My App Realm");
+        result.setKey("3028472b-da34-4501-bfd8-a355c42bdf92");
+    }
+
+    DigestAuthenticationFilter digestAuthenticationFilter() {
+        DigestAuthenticationFilter result = new DigestAuthenticationFilter();
+        result.setUserDetailsService(userDetailsService);
+        result.setAuthenticationEntryPoint(authenticationEntryPoint());
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests().anyRequest().authenticated();
+        http.exceptionHandling(e -> e.authenticationEntryPoint(authenticationEntryPoint()))
+                .addFilterBefore(digestAuthenticationFilter());
+        return http.build();
+    }
+    **/
 }
